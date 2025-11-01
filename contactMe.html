@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Saaim Tamboli</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contactMe.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Saaim.</a>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="resume.html">Resume</a>
+            <a href="contactMe.html" class="active">Contact</a>
+        </nav>
+    </header>
+
+    <section class="contact-container">
+        <div class="contact-cards">
+            <!-- Left Side: Address Card -->
+            <div class="contact-card address-card">
+                <div class="address-details">
+                    <div class="address-item">
+                        <i class='bx bx-map'></i>
+                        <div class="address-text">
+                            <strong>My Address</strong>
+                            <p>Tamboli House, Dattanagar, Nilanga<br>Dist - Latur, Maharashtra<br>Pincode - 413521</p>
+                        </div>
+                    </div>
+
+                    <div class="address-item">
+                        <i class='bx bx-phone'></i>
+                        <div class="address-text">
+                            <strong>Phone</strong>
+                            <p>9309964616</p>
+                        </div>
+                    </div>
+
+                    <div class="address-item">
+                        <i class='bx bx-envelope'></i>
+                        <div class="address-text">
+                            <strong>Email</strong>
+                            <p>tambolisaaim@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+             <!-- Right Side: Contact Form Card -->
+      <div class="contact-card form-card">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="contact-note">Get in touch! Please leave a message, and I'll reply as soon as possible.</p>
+
+        <!-- Contact Form -->
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="from_name" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="from_email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+
+        <div id="form-status"></div>
+      </div>
+    </div>
+    </section>
+
+
+    <section class="final-section">
+        <div class="slogan-box">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/saaim-tamboli" target="_blank" class="social-icon">
+                    <i class='bx bxl-linkedin'></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                    <i class='bx bxl-instagram'></i>
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("5sfZCAAOW1Np-PRKa"); // 🔹 Replace with your actual EmailJS public key
+    })();
+
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Optional: disable button while sending
+      const btn = this.querySelector(".btn");
+      btn.textContent = "Sending...";
+      btn.disabled = true;
+
+      emailjs.sendForm("service_1a13wxv", "template_csx3xff", this)
+        .then(function () {
+          document.getElementById("form-status").innerHTML = "<p class='success'>✅ Message sent successfully!</p>";
+          document.getElementById("contact-form").reset();
+          btn.textContent = "Send Message";
+          btn.disabled = false;
+        }, function (error) {
+          document.getElementById("form-status").innerHTML = "<p class='error'>❌ Failed to send message. Please try again later.</p>";
+          console.error("EmailJS Error:", error);
+          btn.textContent = "Send Message";
+          btn.disabled = false;
+        });
+    });
+  </script>
+</body>
+</html>
