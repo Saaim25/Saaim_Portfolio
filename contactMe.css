@@ -343,7 +343,7 @@ textarea::placeholder {
 @media (max-width: 576px) {
   .contact-container {
     padding: 80px 6% 50px;
-    height: 140vh;
+    height: 145vh;
   }
 
   .contact-card {
