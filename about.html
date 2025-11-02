@@ -11,8 +11,11 @@
 
 <body>
     <header class="header">
-        <a href="#" class="logo">Saaim.</a>
-        <nav class="navbar">
+        <a href="index.html" class="logo">Saaim.</a>
+        <div class="menu-icon" id="menu-icon">
+            <i class='bx bx-menu'></i>
+        </div>
+        <nav class="navbar" id="navbar">
             <a href="index.html">Home</a>
             <a href="about.html" class="active">About</a>
             <a href="resume.html">Resume</a>
@@ -152,5 +155,12 @@
 
 
 </body>
+<script>
+    const menuIcon = document.getElementById('menu-icon');
+    const navbar = document.getElementById('navbar');
 
+    menuIcon.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+    });
+</script>
 </html>
